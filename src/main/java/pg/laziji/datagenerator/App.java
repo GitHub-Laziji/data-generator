@@ -16,19 +16,15 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println(Arrays.toString(args));
-
         Date startTime = new Date();
         System.out.println("Start time: " + startTime.toString());
 
         String path = "./config.json";
-        for (int i = 0; i < args.length - 1; i++) {
-            if ("-c".equals(args[i])) {
-                path = args[i + 1];
-                break;
-            }
+        if (args.length > 0) {
+            path = args[0];
         }
         System.out.println("Load config: " + path);
+
         JSONObject config = loadJsonFile(path);
         System.out.println(JSON.toJSONString(config, true));
 
