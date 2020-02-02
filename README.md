@@ -1,15 +1,22 @@
 # data-generator
 数据表随机数据生成器
 
+## 下载
+[https://github.com/GitHub-Laziji/data-generator/releases](https://github.com/GitHub-Laziji/data-generator/releases)
+
 ## 示例
+
+### 使用
 ```
-java -jar ./data-generator-1.0.jar ./config.json
+java -jar ./data-generator-1.0-full.jar ./config.json
 ```
+
+### config.json
 ```json
 {
   "database": {
     "type": "mysql",
-    "url": "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai",
+    "url": "jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai",
     "username": "root",
     "password": ""
   },

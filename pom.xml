@@ -41,6 +41,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <finalName>${pom.artifactId}-${pom.version}-full</finalName>
                     <archive>
                         <manifest>
                             <mainClass>pg.laziji.datagenerator.App</mainClass>
