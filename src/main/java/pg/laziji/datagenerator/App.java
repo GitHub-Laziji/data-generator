@@ -9,8 +9,10 @@ import org.laziji.commons.rereg.model.OrdinaryNode;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Driver;
 import java.sql.PreparedStatement;
 import java.util.*;
 
@@ -31,13 +33,16 @@ public class App {
         JSONObject dbConfig = config.getJSONObject("database");
         JSONArray tableConfigs = config.getJSONArray("tables");
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        try (Connection connection = DriverManager.getConnection(
-                dbConfig.getString("url"),
-                dbConfig.getString("username"),
-                dbConfig.getString("password"))) {
-            connection.setAutoCommit(false);
+        URL driverUrl = new URL("file:" + dbConfig.getString("driverPath"));
+        Class driverClass = new URLClassLoader(new URL[]{driverUrl}).loadClass(dbConfig.getString("driverClass"));
+        Driver driver = (Driver) driverClass.newInstance();
 
+        Properties properties = new Properties();
+        properties.setProperty("user", dbConfig.getString("username"));
+        properties.setProperty("password", dbConfig.getString("password"));
+        try (Connection connection = driver.connect(
+                dbConfig.getString("url"), properties)) {
+            connection.setAutoCommit(false);
 
             for (int i = 0; i < tableConfigs.size(); i++) {
                 JSONObject tableConfig = tableConfigs.getJSONObject(i);

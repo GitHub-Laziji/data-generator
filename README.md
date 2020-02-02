@@ -15,7 +15,8 @@ java -jar ./data-generator-1.0-full.jar ./config.json
 ```json
 {
   "database": {
-    "type": "mysql",
+    "driverPath": "./mysql-connector-java-8.0.13.jar",
+    "driverClass": "com.mysql.cj.jdbc.Driver",
     "url": "jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai",
     "username": "root",
     "password": ""
