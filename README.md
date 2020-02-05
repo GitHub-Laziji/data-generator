@@ -1,4 +1,7 @@
-# data-generator
+# Data Generator
+![](https://img.shields.io/github/languages/top/github-laziji/data-generator.svg?style=flat)
+![](https://img.shields.io/github/stars/gitHub-laziji/data-generator.svg?style=social)
+
 数据表随机数据生成器
 
 ## 下载
