@@ -42,13 +42,7 @@ java -jar ./data-generator-1.0-full.jar ./config.json
 
 
 ## 开发
-### 安装依赖
 本项目使用了依赖[https://github.com/GitHub-Laziji/reverse-regexp](https://github.com/GitHub-Laziji/reverse-regexp)
-```
-git clone https://github.com/GitHub-Laziji/reverse-regexp.git
-cd reverse-regexp
-mvn install
-```
 
 ### 构建项目
 ```
