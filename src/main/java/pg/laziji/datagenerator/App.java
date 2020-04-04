@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.PreparedStatement;
@@ -100,7 +101,7 @@ public class App {
             int len;
             StringBuilder sb = new StringBuilder();
             while ((len = fis.read(buf)) > 0) {
-                sb.append(new String(buf, 0, len));
+                sb.append(new String(buf, 0, len, StandardCharsets.UTF_8));
             }
             return JSON.parseObject(sb.toString());
         }
